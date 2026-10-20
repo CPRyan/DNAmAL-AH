@@ -1,0 +1,87 @@
+---
+title: "HRS SLE analysis Summary"
+author: "Calen P. Ryan, PhD"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+    code_folding: hide
+    theme: readable
+---
+
+```{r setup, include=FALSE}
+library(here)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+
+```{r, echo = F, warning = F, message=F}
+here::here()
+source("Code/HRS/01_HRS_stress.R")
+```
+
+
+# Data Overview (all measures)
+This section looks at the data overall, including numerical summaries and exploratory data analysis. Individual models and plots for specific SLEs in HRS follow. 
+
+## Table of all variables (and missingness)
+```{r}
+table_all
+```
+Individual tables (for each SLE score) are found in Output/HRS/Tables/HRS_SLE_summary_tables.xlsx
+
+## Histograms of DNAm AL measures and SLE in HRS
+```{r}
+histogramz
+```
+
+## Correlation matrix of all variables
+```{r, warning = F, message=F}
+ggp
+```
+
+
+# SLE score 1
+A numerical summary for SLE score 1 is found in Output/HRS/Tables/HRS_SLE_summary_tables.xlsx
+
+## Models comparing all three DNAm measures (DNAmAL, methAL, and methALT) to SLE Score 1. 
+```{r, results='asis'}
+tab_model(m1, m2, m3)
+```
+
+## Plots of all three DNAm measures (DNAmAL, methAL, and methALT) to SLE Score 1. 
+```{r}
+sle_plots$DNAmAL_by_sle_score1 | sle_plots$methAL_by_sle_score1 | sle_plots$methALT_by_sle_score1
+```
+
+
+
+# SLE score 2
+A numerical summary for SLE score 2 isfound in Output/HRS/Tables/HRS_SLE_summary_tables.xlsx
+
+## Models comparing all three DNAm measures (DNAmAL, methAL, and methALT) to SLE Score 2. 
+```{r, results='asis'}
+tab_model(m4, m5, m6)
+```
+
+## Plots of all three DNAm measures (DNAmAL, methAL, and methALT) to SLE Score 2. 
+```{r}
+sle_plots$DNAmAL_by_sle_score2 | sle_plots$methAL_by_sle_score2 | sle_plots$methALT_by_sle_score2
+```
+
+
+# SLE score 3
+A numerical summary for SLE score 3 is found in Output/HRS/Tables/HRS_SLE_summary_tables.xlsx
+
+## Models comparing all three DNAm measures (DNAmAL, methAL, and methALT) to SLE Score 1. 
+```{r, results='asis'}
+tab_model(m7, m8, m9)
+```
+
+## Plots of all three DNAm measures (DNAmAL, methAL, and methALT) to SLE Score 3. 
+```{r}
+sle_plots$DNAmAL_by_sle_score3 | sle_plots$methAL_by_sle_score3 | sle_plots$methALT_by_sle_score3
+```
